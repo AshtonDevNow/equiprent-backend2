@@ -3,10 +3,10 @@ class Api::V1::UsersController < Api::V1::BaseController
   def login
 # ?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code
     wx_params = {
-      app_id: Rails.application.credentials.dig( :wx_mp, :app_id)
-      secret: Rails.application.credentials.dig( :wx_mp, :app_secret)
-      js_code: params[:code]
-      grant_type: 'authorization_code'
+      app_id: Rails.application.credentials.dig( :wx_mp, :app_id),
+      secret: Rails.application.credentials.dig( :wx_mp, :app_secret),
+      js_code: params[:code],
+      grant_type: 'authorization_code',
     }
 
     response = RestClient.get(URL, wx_params)
