@@ -12,7 +12,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     response = RestClient.get(URL, wx_params)
     user_info = JSON.parse(response)
     #The line below is stated in the wechat documentation that it finds the unique user id
-    my_openid = user_info['openid']
+    mp_openid = user_info['openid']
     @user = User.find_by(mp_openid: mp_openid)
     #Check this with TA
     @user = User.create(mp_openid: mp_openid, email: "#{SecureRandom.hex(8)}@mail.com", password:'password') if user.blank?
