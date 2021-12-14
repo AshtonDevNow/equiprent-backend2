@@ -1,1 +1,1 @@
-jsomn.partial! 'auth', user: @user
+json.partial! 'auth', user: @user
