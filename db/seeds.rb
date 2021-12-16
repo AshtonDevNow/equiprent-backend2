@@ -5,16 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+  Product.destroy_all
+  User.destroy_all
+  Category.destroy_all
 
+user_params = {
+    name: "David",
+    email: "fakeemail@fake.com",
+    password: "12345678"
+  }
+user = User.create!(user_params)
+category = Category.create!(name: "Bikes")
+product_params = {
+  name: "Motorcycle",
+  description: "With sidecar!",
+  user: user,
+  category: category
+}
+product = Product.create!(product_params)
 
-products = [
-  {
-  "id": 1,
-  "name": "Motorcycle",
-  "price": "130",
-  "description": "With sidecar!"
- }
-]
 # products.each do |product|
 #   prod = Product.create!(name: product[:name])
 #   puts "product #{prod.name} has been created"
