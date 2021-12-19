@@ -10,8 +10,10 @@ class Api::V1::ProductsController < Api::V1::BaseController
   end
 
   def create
-    @product = Product.create(permitted_params)
-
+    @product = Product.new(permitted_params)
+    @product.user = current_user
+    @product.category = Category.find_by(name: "Bikes")
+    @product.save
   end
 
   # def create
@@ -35,6 +37,6 @@ class Api::V1::ProductsController < Api::V1::BaseController
   end
 
   def permitted_params
-    params.require(:product).permit(:name, :text)
+    params.require(:product).permit(:name, :description, :price)
   end
 end
